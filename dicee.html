@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Dicee</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
-
+    <meta charset="utf-8" />
+    <title>Dice Game</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
     <div class="container">
-      <h1>Refresh Me</h1>
+      <h1 id="title">Welcome To Dice Game</h1>
 
       <div class="dice">
         <p>Player 1</p>
-        <img class="img1" src="">
+        <img class="player1" class="img1" src="images/dice6.png" />
       </div>
 
       <div class="dice">
         <p>Player 2</p>
-        <img class="img2" src="">
+        <img class="player2" src="images/dice6.png" />
       </div>
-
     </div>
+    <br>
+    <div class="btn-container">
+      <button class="btn">Click to roll</button>
+    </div>
+    <script>
+      const player1 = document.querySelector(".player1");
+      const player2 = document.querySelector(".player2");
+      const header = document.getElementById("title");
+      const btn = document.querySelector(".btn");
 
+      btn.addEventListener("click", () => {
+        const randomNumber1 = Math.floor(Math.random() * 6 + 1);
+        const randomNumber2 = Math.floor(Math.random() * 6 + 1);
 
+        player1.setAttribute("src", `images/dice${randomNumber1}.png`);
+        player2.setAttribute("src", `images/dice${randomNumber2}.png`);
+
+        if (randomNumber1 > randomNumber2) {
+          header.textContent = "Player 1 Wins";
+        } else if (randomNumber1 < randomNumber2) {
+          header.textContent = "Player 2 Wins";
+        } else {
+          header.textContent = "Draw";
+        }
+      });
+    </script>
   </body>
-
-  <footer>
-    www 🎲 App Brewery 🎲 com
-  </footer>
 </html>
